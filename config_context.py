@@ -207,67 +207,50 @@ PACKAGING_JOBS = [
             "docs/tutorial.md"
         ]
     },
-    # MCP: Part 1 - Project Overview & Philosophy (SAFE)
+
+    # MCP
     {
         "repo_name": "modelcontextprotocol",
         "sub_path": ".",
-        "output_filename": "mcp_overview_philosophy_context.md",
+        "output_filename": "mcp_context.md",
         "include": [
             "README.md",
+            "CONTRIBUTING.md",
             "docs/introduction.mdx",
             "docs/faqs.mdx",
+            "docs/examples.mdx",
+            "docs/clients.mdx",
+            "docs/community/**/*.mdx",
             "docs/development/roadmap.mdx",
-            "docs/community/governance.mdx",
-            "docs/community/sep-guidelines.mdx"
+            "docs/docs/concepts/**/*.mdx",
+            "docs/docs/tools/**/*.mdx",
+            "docs/specification/**/*.mdx"
+        ],
+        "ignore": [
+            "schema/",
+            "blog/",
+            "docs/sdk/",
+            "docs/quickstart/",
+            "docs/tutorials/",
+            "docs/links/",
+            "docs/images/",
+            "docs/logo/",
+            "generated_context/",
+            ".github/",
+            ".*",
+            "*LICENSE",
+            "*CODE_OF_CONDUCT.md",
+            "*SECURITY.md",
+            "*.css",
+            "*.html",
+            "*.puml",
+            "*.mjs",
+            "go.mod",
+            "go.sum",
+            "hugo.toml"
         ]
     },
-    # MCP: Part 2 - Core Concepts (CURATED)
-    {
-        "repo_name": "modelcontextprotocol",
-        "sub_path": ".",
-        "output_filename": "mcp_core_concepts_context.md",
-        "include": [
-            "docs/docs/concepts/roots.mdx",
-            "docs/docs/concepts/sampling.mdx"
-        ]
-    },
-    # MCP: Part 3 - Formal Specification (ESSENTIAL)
-    {
-        "repo_name": "modelcontextprotocol",
-        "sub_path": ".",
-        "output_filename": "mcp_formal_specification_context.md",
-        "include": [
-            "docs/specification/versioning.mdx",
-            "docs/specification/draft/index.mdx",
-            "docs/specification/draft/changelog.mdx",
-            "docs/specification/draft/schema.mdx",
-            "docs/specification/draft/architecture/index.mdx",
-            "docs/specification/draft/basic/index.mdx",
-            "docs/specification/draft/basic/lifecycle.mdx",
-            "docs/specification/draft/basic/transports.mdx",
-            "docs/specification/draft/basic/authorization.mdx",
-            "docs/specification/draft/basic/security_best_practices.mdx",
-            "docs/specification/draft/client/elicitation.mdx",
-            "docs/specification/draft/client/roots.mdx",
-            "docs/specification/draft/client/sampling.mdx",
-            "docs/specification/draft/server/index.mdx",
-            "docs/specification/draft/server/prompts.mdx",
-            "docs/specification/draft/server/resources.mdx",
-            "docs/specification/draft/server/tools.mdx"
-        ]
-    },
-    # MCP: Part 4 - Practical Guides & Examples (SAFE)
-    {
-        "repo_name": "modelcontextprotocol",
-        "sub_path": ".",
-        "output_filename": "mcp_guides_examples_context.md",
-        "include": [
-            "docs/quickstart/user.mdx",
-            "docs/tutorials/building-mcp-with-llms.mdx",
-            "docs/docs/tools/inspector.mdx",
-            "docs/docs/tools/debugging.mdx"
-        ]
-    },
+
     # FAST-AGENT: Examples
     {
         "repo_name": "fast-agent",

@@ -1,0 +1,38 @@
+# Includes
+# Prioritize including high-value directories and files.
+# An include pattern will override a general exclude pattern.
+README.md
+CONTRIBUTING.md
+docs/introduction.mdx
+docs/faqs.mdx
+docs/examples.mdx
+docs/clients.mdx
+docs/community/**/*.mdx
+docs/development/roadmap.mdx
+docs/docs/concepts/**/*.mdx
+docs/docs/tools/**/*.mdx
+docs/specification/**/*.mdx
+
+# Excludes
+# Exclude non-essential, boilerplate, or low-level implementation files.
+schema/
+blog/
+docs/sdk/
+docs/quickstart/
+docs/tutorials/
+docs/links/
+docs/images/
+docs/logo/
+generated_context/
+.github/
+.*
+*LICENSE
+*CODE_OF_CONDUCT.md
+*SECURITY.md
+*.css
+*.html
+*.puml
+*.mjs
+go.mod
+go.sum
+hugo.toml
