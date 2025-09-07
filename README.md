@@ -1,31 +1,33 @@
 > Last updated: July 2025
-# Context for MCP and fast-agent
 
-This repository contains context files for building AI agents using the Model Context Protocol (MCP) and the `fast-agent` framework.
+# Context Generation for MCP and fast-agent
+
+This repository holds a Python-based tool for generating context files, specifically for building AI agents with the Model Context Protocol (MCP) and the `fast-agent` framework.
 
 > **Note:** These files are generated from source repositories and are time-sensitive. They are primarily for my own use, but feel free to explore the generation scripts.
 
-## Quick Start
+## Overview
+
+The core of this project is the `generate_context.py` script, which packages files from specified source repositories into comprehensive markdown files. The process is controlled by a series of job definitions in `config_context.py`, allowing for precise selection of files to include in each context package.
+
+## How to Run
+
+To generate the context files, run the main script from your terminal:
 
 ```sh
 python generate_context.py --root-dir /path/to/your/repos --output-here
 ```
-- Use `--output-here` (or `-oh`) to always output to a `generated_context` folder in this directory.
-- You can set a max token limit per file with `--max-tokens` (default: 16000).
 
-## Output
+### Key Arguments:
+*   `--root-dir`: **(Required)** The directory containing the source repos you want to process.
+*   `--output-here` (`-oh`): A flag to save the output to a `generated_context/` folder in the current directory.
+*   `--max-tokens`: Sets the token limit for including a single file (default: 16000). Files exceeding this are skipped.
 
-- Each job in `config_context.py` creates a markdown file in `generated_context/`.
-- For fast-agent, you'll get:
-  - `fast_agent_examples_context.md`
-  - `fast_agent_tests_context.md`
-  - `fast_agent_scripts_context.md`
-- Other repos are split by topic or area as needed.
+## Configuration
 
-## Notes
+The script's behavior is defined in `config_context.py`:
 
-- The script skips files that are too large (over the token limit), unless they're explicitly included.
-- You can adjust which files are included by editing `config_context.py`.
-- Token counting uses `tiktoken` if available, otherwise falls back to word count.
+*   **`PACKAGING_JOBS`**: A list of dictionaries, where each one defines a single packaging task. You can specify the source repository, sub-path, include/ignore patterns, and the final output filename.
+*   **`DEFAULT_IGNORE_PATTERNS`**: A set of file/folder patterns (like `.git`, `__pycache__`, `node_modules`) that are excluded from all jobs by default.
 
-That's it. If you want to add or change what gets packaged, just update the config and rerun the script.
+To customize the output, simply add or modify the jobs in the `PACKAGING_JOBS` list and rerun the script.

@@ -3,8 +3,7 @@ Configuration for the project packaging script.
 Contains all packaging jobs and default settings.
 """
 
-# Default ignore patterns applied to all jobs
-# These patterns are used to exclude common temporary files, logs, and environment folders.
+# Default patterns for ignoring common temporary files, logs, and environment folders.
 DEFAULT_IGNORE_PATTERNS = {
     # Version control & IDEs
     ".git", ".svn", ".hg", ".vscode", ".idea", ".vs",
@@ -33,12 +32,11 @@ DEFAULT_IGNORE_PATTERNS = {
     "**/*lock*", "**/package.json", "**/pyproject.toml"
 }
 
-# The directory where the final context files will be saved.
+# Default output directory for generated context files.
 OUTPUT_DIR = "generated_context"
 
-# A list of all packaging jobs to be performed.
-# Each job is a dictionary specifying the repository, the files to include,
-# and the name of the output file.
+# Defines all packaging jobs. Each job is a dictionary specifying the source repo,
+# files to include/exclude, and the output filename.
 PACKAGING_JOBS = [
     # To package an entire repository, create a job without an "include" key.
     # For example:
