@@ -1,31 +1,21 @@
-> Last updated: July 2025
-# Context for MCP and fast-agent
+# Agent Context Pipeline
 
-This repository contains context files for building AI agents using the Model Context Protocol (MCP) and the `fast-agent` framework.
+A modular pipeline for assembling rich context documents that AI agents can actually reason about.
 
-> **Note:** These files are generated from source repositories and are time-sensitive. They are primarily for my own use, but feel free to explore the generation scripts.
+The current incarnation generates trimmed, AI-readable Markdown bundles from arbitrary source repositories — useful for handing to a long-context model when you want it to discuss a framework holistically without feeding it the raw codebase. The longer-term direction extends into RAG corpus generation and codebase vector indexing for live retrieval.
 
-## Quick Start
+> **Why:** Context window is the single biggest lever on agent quality, and naive `cat` of a repo wastes it. This is the in-between layer — purposeful, structured context curated per task.
+
+## What it does today
+
+- **Repo → context document.** Configurable include/exclude rules pull just the high-value files (docs, examples, key tests) and emit a single Markdown file under a token cap.
+- **Per-area splits.** A repo can be split into multiple themed context files (for example, for `fast-agent`: `examples`, `tests`, `scripts`).
+- **Token-aware culling.** Uses `tiktoken` if available, falls back to word count; oversized files are flagged rather than silently dropped.
+
+## Quick start
 
 ```sh
 python generate_context.py --root-dir /path/to/your/repos --output-here
 ```
-- Use `--output-here` (or `-oh`) to always output to a `generated_context` folder in this directory.
-- You can set a max token limit per file with `--max-tokens` (default: 16000).
 
-## Output
-
-- Each job in `config_context.py` creates a markdown file in `generated_context/`.
-- For fast-agent, you'll get:
-  - `fast_agent_examples_context.md`
-  - `fast_agent_tests_context.md`
-  - `fast_agent_scripts_context.md`
-- Other repos are split by topic or area as needed.
-
-## Notes
-
-- The script skips files that are too large (over the token limit), unless they're explicitly included.
-- You can adjust which files are included by editing `config_context.py`.
-- Token counting uses `tiktoken` if available, otherwise falls back to word count.
-
-That's it. If you want to add or change what gets packaged, just update the config and rerun the script.
+- `--output-here` (or `-oh`) writes to `generated_context/` in the current di
